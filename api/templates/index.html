@@ -5,15 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Select a Metabolite</h1>
-    <form action="/select_metabolite" target="_blank" method="post" id="metabolite_search_form">
-        <label for="metabolite_selection">Metabolite Selection: </label>  
-        <select id="metabolite_selection" name="metabolite_selection" form="metabolite_search_form" multiple size="10">
+    <form action="/query_metabolite" target="_blank" method="post" id="metabolite_search_form">
+        <label for="select_metabolite">Select a Metabolite: </label>  
+        <select id="select_metabolite" name="select_metabolite" form="metabolite_search_form" size="5" required>
             <option value=test>test</option>
         </select>
         <br><br>
 
-        <label for="search_metabolite">Search Metabolite: </label>
+        <label for="search_metabolite">Search a Metabolite: </label>
         <input type="text" id="search_metabolite" name="search_metabolite">
         <br><br>
         
