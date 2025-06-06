@@ -33,6 +33,7 @@
                 for (let sub_path of Object.keys(metabolite_dict[super_path])) {
                     // metabolite_option = metabolite_dict[super_path][sub_path];
                     let sub_path_node = document.createElement("option");
+                    sub_path_node.innerHTML = sub_path;
                     super_path_node.appendChild(sub_path_node);
                     document.getElementById("test_element").innerHTML = sub_path;
                 }
