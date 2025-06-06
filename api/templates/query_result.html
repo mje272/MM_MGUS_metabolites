@@ -5,12 +5,16 @@
     <script>
         const metabolite = '{{ metabolite|safe }}';
         function render_results() {
-            document.getElementById("test").innerHTML = metabolite
+            document.getElementById("test").innerHTML = metabolite;
         }
     </script>
 {% endblock %}
 
+{% block body_attributes %}
+    onload='render_results();'
+{% endblock %}
+
 {% block body %}
     <p id="test"></p>
-    123
+    1234
 {% endblock %}
