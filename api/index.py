@@ -10,8 +10,8 @@ def index():
 
 @app.route('/query_metabolite', methods = ['POST'])
 def query_metabolite():
-    query = request.form['query_metabolite']
-    return render_template('query_result.html', metabolite=query_metabolite)
+    metabolite = request.form['query_metabolite']
+    return render_template('query_result.html', metabolite=metabolite)
 
 
 if __name__ == "__main__":
