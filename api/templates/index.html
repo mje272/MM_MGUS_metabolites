@@ -27,12 +27,12 @@
             document.getElementById("test_element").innerHTML = "TEST4";
 
             for (let super_path of Object.keys(metabolite_dict)) {
-                super_path_node = document.createElement("optgroup");
+                let super_path_node = document.createElement("optgroup");
                 super_path_node.innerHTML = super_path;
                 super_path_node.id = super_path;
                 for (let sub_path of Object.keys(metabolite_dict[super_path])) {
                     // metabolite_option = metabolite_dict[super_path][sub_path];
-                    sub_path_node = document.createElement("option");
+                    let sub_path_node = document.createElement("option");
                     super_path_node.appendChild(sub_path_node);
                     document.getElementById("test_element").innerHTML = "TEST2";
                 }
