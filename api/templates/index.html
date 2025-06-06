@@ -23,8 +23,11 @@
                     sub_path_node = document.createElement("option");
                     super_path_node.appendChild(sub_path_node);
                 }
-                document.getElementById("select_metabolite").appendChild(super_path_node)
+                document.getElementById("select_metabolite").appendChild(super_path_node);
             }
+        }
+        function test(){
+            document.getElementById("test_element").innerHTML = "TEST"
         }
 
     </script>
@@ -56,6 +59,7 @@
         <option>Lipid</option>
         <option>Xenobiotics</option>
     </select>
+    <p id="test_element"></p>
     
 {% endblock %}
 
