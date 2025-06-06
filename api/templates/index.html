@@ -4,11 +4,11 @@
     <title>Home</title>
     <script>
         const metabolite_dict = {
-            Lipid:{
+            "Lipid":{
                 "Fatty Acid, Branched": ["(12 or 13)-methylmyristate (a15:0 or i15:0)", "(14 or 15)-methylpalmitate (a17:0 or i17:0)"],
                 "Fatty Acid Metabolism (Acyl Carnitine, Hydroxy)": ["(R)-3-hydroxybutyrylcarnitine"]
             },
-            Xenobiotics:{
+            "Xenobiotics":{
                 "Chemical": ["1,2,3-benzenetriol sulfate (2)"],
                 "Xanthine Metabolism": ["1,3,7-trimethylurate"]
             }
@@ -16,6 +16,7 @@
 
         function produce_options() {
             document.getElementById("test_element").innerHTML = "TEST3";
+            document.getElementById("test_element").innerHTML = metabolite_dict.keys()[0];
             for (let super_path of metabolite_dict.keys()) {
                 // super_path_node = document.createElement("optgroup");
                 // super_path_node.innerHTML = super_path;
