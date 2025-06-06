@@ -16,8 +16,8 @@
 
         function produce_options() {
             for (let super_path of metabolite_dict.keys()) {
-                super_path_node = document.createElement("optgroup");
-                super_path_node.innerHTML = super_path;
+                // super_path_node = document.createElement("optgroup");
+                // super_path_node.innerHTML = super_path;
                 // super_path_node.id = super_path;
                 // for (let sub_path of metabolite_dict[super_path].keys()) {
                 //     // metabolite_option = metabolite_dict[super_path][sub_path];
@@ -26,7 +26,7 @@
                 // }
                 // document.getElementById("select_metabolite").appendChild(super_path_node);
             }
-            
+            document.getElementById("test_element").innerHTML = "TEST2";
         }
 
         function test(){
@@ -37,7 +37,7 @@
 {% endblock %}
 
 {% block body_attributes %}
-    onload='produce_options(); test();'
+    onload='test(); produce_options();'
 {% endblock %}
 
 {% block body %}
