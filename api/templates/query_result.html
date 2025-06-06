@@ -2,8 +2,15 @@
 
 {% block head %}
     <title>Query Results</title>
+    <script>
+        const metabolite = '{{ metabolite|safe }}';
+        function render_results() {
+            document.getElementById("test").innerHTML = metabolite
+        }
+    </script>
 {% endblock %}
 
 {% block body %}
-    <p>'{{ metabolite|safe }}'</p>
+    <p id="test"></p>
+    123
 {% endblock %}
