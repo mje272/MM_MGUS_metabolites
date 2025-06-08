@@ -13,21 +13,12 @@
                 "Xanthine Metabolism": ["1,3,7-trimethylurate"]
             }
         };
-        // const test_dict = {
-        //     "A": {a:1, 
-        //         b:2, 
-        //         c:3},
-        //     "B": {d:4, 
-        //         e:5, 
-        //         f:6},
-        // };
-
 
         function produce_options() {
             document.getElementById("test_element").innerHTML = "TEST4";
 
             for (let super_path of Object.keys(metabolite_dict)) {
-                let super_path_node = document.createElement("optgroup");
+                let super_path_node = c
                 super_path_node.label = super_path;
                 super_path_node.id = super_path;
 
@@ -45,7 +36,10 @@
                     }
                 }
                 document.getElementById("select_metabolite").appendChild(super_path_node);
-
+                let super_path_select_opt_node = document.createElement("option");
+                super_path_select_opt_node.innerHTML = super_path;
+                
+                document.getElementById("super_path_select").appendChild(super_path_select_opt_node);
             }
         }
 
@@ -61,6 +55,15 @@
 {% endblock %}
 
 {% block body %}
+
+    <!-- make it so this narrows down selection -->
+    <!-- Also make it so that this list is generated from online data -->
+    <label for="super_path_select">Select a Super Pathway</label>
+    <select id="super_path_select" size="5">
+        <!-- <option onclick="select_super_path()">Lipid</option>
+        <option onclick="">Xenobiotics</option> -->
+    </select>
+
     <h1>Select a metabolite</h1>
     <form action="/query_metabolite" target="_blank" method="post" id="metabolite_search_form">
         <label for="select_metabolite">Select a Metabolite: </label>  
@@ -77,11 +80,7 @@
         <button type="submit">Submit</button>
     </form>
     <br>
-    <label for="super_path_select">Select a Super Pathway</label>
-    <select id="super_path_select" size="5">
-        <option>Lipid</option>
-        <option>Xenobiotics</option>
-    </select>
+    
     <p id="test_element"></p>
     
     (12 or 13)-methylmyristate (a15:0 or i15:0)	Lipid	Fatty Acid, Branched
