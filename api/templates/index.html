@@ -30,12 +30,19 @@
                 let super_path_node = document.createElement("optgroup");
                 super_path_node.label = super_path;
                 super_path_node.id = super_path;
+
                 for (let sub_path of Object.keys(metabolite_dict[super_path])) {
-                    // metabolite_option = metabolite_dict[super_path][sub_path];
-                    let sub_path_node = document.createElement("optgroup");
-                    sub_path_node.label = sub_path;
+                    let sub_path_node = document.createElement("option");
+                    sub_path_node.innerHTML = sub_path;
+                    sub_path_node.disabled = "disabled"; //make the subpath text bold or something
                     super_path_node.appendChild(sub_path_node);
-                    document.getElementById("test_element").innerHTML = sub_path;
+                    
+
+                    for (let meteabolite_option of metabolite_dict[super_path][sub_path]) {
+                        let metabolite_option_node = document.createElement("option");
+                        metabolite_option_node.innerHTML = meteabolite_option
+                        super_path_node.appendChild(metabolite_option_node);
+                    }
                 }
                 document.getElementById("select_metabolite").appendChild(super_path_node);
 
@@ -43,7 +50,7 @@
         }
 
         function test(){
-            // document.getElementById("test_element").innerHTML = "TEST";
+            document.getElementById("test_element").innerHTML = "TEST";
         }
 
     </script>
