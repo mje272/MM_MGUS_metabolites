@@ -39,8 +39,7 @@
                 let super_path_select_opt_node = document.createElement("option");
                 super_path_select_opt_node.innerHTML = super_path;
                 super_path_select_opt_node.id = super_path;
-                super_path_select_opt_node.label = "ABCDE";
-                super_path_select_opt_node.onclick = "narrow_selection_to_super_path();";
+                super_path_select_opt_node.onclick = narrow_selection_to_super_path(super_path);
                 
                 document.getElementById("super_path_select").appendChild(super_path_select_opt_node);
 
