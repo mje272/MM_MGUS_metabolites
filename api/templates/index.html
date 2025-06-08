@@ -29,16 +29,16 @@
                     super_path_node.appendChild(sub_path_node);
                     
 
-                    for (let meteabolite_option of metabolite_dict[super_path][sub_path]) {
+                    for (let metabolite_option of metabolite_dict[super_path][sub_path]) {
                         let metabolite_option_node = document.createElement("option");
-                        metabolite_option_node.innerHTML = meteabolite_option
+                        metabolite_option_node.innerHTML = metabolite_option;
                         super_path_node.appendChild(metabolite_option_node);
                     }
                 }
                 document.getElementById("select_metabolite").appendChild(super_path_node);
                 let super_path_select_opt_node = document.createElement("option");
                 super_path_select_opt_node.innerHTML = super_path;
-                
+
                 document.getElementById("super_path_select").appendChild(super_path_select_opt_node);
             }
         }
@@ -60,8 +60,7 @@
     <!-- Also make it so that this list is generated from online data -->
     <label for="super_path_select">Select a Super Pathway</label>
     <select id="super_path_select" size="5">
-        <!-- <option onclick="select_super_path()">Lipid</option>
-        <option onclick="">Xenobiotics</option> -->
+
     </select>
 
     <h1>Select a metabolite</h1>
