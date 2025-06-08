@@ -19,10 +19,8 @@
             for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
                 select_metabolite_child.hidden = "true";
             }
-            for (let super_path_child of document.getElementById(sup_path).children) {
-                select_metabolite_child.hidden = "false";
-            }
-            test("B");
+            document.getElementById(sup_path).hidden = "false";
+            test(sup_path);
         }
 
         function produce_options() {
