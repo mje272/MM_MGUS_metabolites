@@ -49,23 +49,25 @@
         }
 
         function narrow_selection_to_super_path(sup_path) {
+            test("A");
             for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
                 select_metabolite_child.hidden = "true";
             }
             for (let super_path_child of document.getElementById(sup_path).children) {
                 select_metabolite_child.hidden = "false";
             }
+            test("B");
         }
 
-        function test(){
-            document.getElementById("test_element").innerHTML = "TEST";
+        function test(test_code){
+            document.getElementById("test_element").innerHTML = "TEST" + test_code;
         }
 
     </script>
 {% endblock %}
 
 {% block body_attributes %}
-    onload='test(); produce_options();'
+    onload="test('1'); produce_options();"
 {% endblock %}
 
 {% block body %}
