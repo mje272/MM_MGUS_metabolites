@@ -99,14 +99,14 @@
                         metabolite_option_node.innerHTML = metabolite_option;
                         metabolite_option_node.id = metabolite_option;
                         metabolite_option_node.value = metabolite_option;  //can alternatively use numerical code or something
-                        metabolite_option_node.onclick = function(){ narrow_selection_to_sub_path(super_path, sub_path); }; //select sub path when selected
+                        metabolite_option_node.onclick = function(){ narrow_selection_to_sub_path(super_path, sub_path); this.selected=true;}; //select sub path when selected; also select this option so doesnt get unselected by sup path select
                         super_path_node.appendChild(metabolite_option_node);
                     }
 
                     let sub_path_select_opt_node = document.createElement("option");
                     sub_path_select_opt_node.innerHTML = sub_path;
                     sub_path_select_opt_node.id = sub_path;
-                    sub_path_select_opt_node.onclick = function(){ narrow_selection_to_sub_path(super_path, sub_path) };
+                    sub_path_select_opt_node.onclick = function(){ narrow_selection_to_sub_path(super_path, sub_path); };
                     document.getElementById("sub_path_select").appendChild(sub_path_select_opt_node);
                 }
 
