@@ -38,6 +38,11 @@
             for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
                 select_metabolite_child.hidden = false;
             }
+            for (let sup_path in metabolite_dict) {
+                for (let sub_path in metabolite_dict[sup_path]) {
+                    document.getElementById(sub_path).hidden = false;
+                }
+            }
         }
 
         function narrow_selection_to_sub_path(sub_path) {
