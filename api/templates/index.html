@@ -85,7 +85,7 @@
                 for (let sub_path in metabolite_dict[super_path]) {  //make sure for in loop is ordered
                     let sub_path_node = document.createElement("option");
                     sub_path_node.innerHTML = sub_path;
-                    sub_path_node.innerHTML = sub_path + " category";
+                    sub_path_node.id = sub_path + " category";
                     sub_path_node.disabled = true; //make the subpath text bold or something
                     super_path_node.appendChild(sub_path_node);
                     
