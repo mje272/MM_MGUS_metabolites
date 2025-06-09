@@ -27,7 +27,7 @@
                 }
             }
 
-            for (let sub_path of metabolite_dict[sup_path]) { //could also combine this with above loop with conditional
+            for (let sub_path in metabolite_dict[sup_path]) { //could also combine this with above loop with conditional
                 document.getElementById(sub_path).hidden = false;
             }
 
