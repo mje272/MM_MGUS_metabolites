@@ -63,6 +63,7 @@
         function narrow_selection_to_sub_path(super_path, sub_path) {
             narrow_selection_to_super_path(super_path); //in case you select sub before super
             document.getElementById(super_path).selected = true;
+            document.getElementById(sub_path).selected = true;  //because selecting_super_path unselects subpaths
 
             super_path_cat_element = document.getElementById(super_path + " category");
             for (let sub_path_or_metab_opt of super_path_cat_element.children) { //hide all members of selected super path
