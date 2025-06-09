@@ -138,8 +138,9 @@
                     for (let metab of metabolite_dict[selected_super_path][selected_sub_path]) {
                         if (metab.includes(search)) {
                             document.getElementById(metab).hidden = false;
+                            test(metab);
                         }
-                        test(metab);
+                        test("2");
                     }
                 } else {
                     for (let sub_path in metabolite_dict[selected_super_path]) {
