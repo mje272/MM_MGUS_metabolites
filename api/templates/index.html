@@ -130,53 +130,39 @@
             let search = document.getElementById("metab_search_bar").value; 
             
             clear_metabolite_select(unselect=false);
-            // let selected_super_path = document.getElementById("super_path_select").value; //search within selected fields
-            // test(selected_super_path + " " + search);
-            // if (selected_super_path && selected_super_path != "All") {
-            //     let selected_sub_path = document.getElementById("sub_path_select").value;
-            //     test(selected_sub_path + " " + search);
-            //     if (selected_sub_path) {
-            //         for (let metab of metabolite_dict[selected_super_path][selected_sub_path]) {
-            //             if (metab.includes(search)) {
-            //                 document.getElementById(metab).hidden = false;
-            //             }
-            //         }
-            //     } else {
-            //         for (let sub_path in metabolite_dict[selected_super_path]) {
-            //             for (let metab of metabolite_dict[selected_super_path][sub_path]) {
-            //                 if (metab.includes(search)) {
-            //                     document.getElementById(metab).hidden = false;
-            //                     document.getElementById(sub_path + " category").hidden = false; //also show subpath (and superpath)
-            //                 }
-            //             }
-            //         }
-            //     }
-            // } else {
-            //     for (let super_path in metabolite_dict) {
-            //         for (let sub_path in metabolite_dict[super_path]) {
-            //             for (let metab of metabolite_dict[super_path][sub_path]) {
-            //                 if (metab.includes(search)) {
-            //                     document.getElementById(metab).hidden = false;
-            //                     document.getElementById(sub_path + " category").hidden = false;
-            //                     document.getElementById(super_path + " category").hidden = false;
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
-            for (let super_path in metabolite_dict) {
-                for (let sub_path in metabolite_dict[super_path]) {
-                    for (let metab of metabolite_dict[super_path][sub_path]) {
+            let selected_super_path = document.getElementById("super_path_select").value; //search within selected fields
+            if (selected_super_path && selected_super_path != "All") {
+                let selected_sub_path = document.getElementById("sub_path_select").value;
+                if (selected_sub_path) {
+                    for (let metab of metabolite_dict[selected_super_path][selected_sub_path]) {
                         if (metab.includes(search)) {
                             document.getElementById(metab).hidden = false;
-                            document.getElementById(sub_path + " category").hidden = false;
-                            document.getElementById(super_path + " category").hidden = false;
+                        }
+                    }
+                } else {
+                    for (let sub_path in metabolite_dict[selected_super_path]) {
+                        for (let metab of metabolite_dict[selected_super_path][sub_path]) {
+                            if (metab.includes(search)) {
+                                document.getElementById(metab).hidden = false;
+                                document.getElementById(sub_path + " category").hidden = false; //also show subpath (and superpath)
+                            }
+                        }
+                    }
+                }
+            } else {
+                for (let super_path in metabolite_dict) {
+                    for (let sub_path in metabolite_dict[super_path]) {
+                        for (let metab of metabolite_dict[super_path][sub_path]) {
+                            if (metab.includes(search)) {
+                                document.getElementById(metab).hidden = false;
+                                document.getElementById(sub_path + " category").hidden = false;
+                                document.getElementById(super_path + " category").hidden = false;
+                            }
                         }
                     }
                 }
             }
         }
-
 
         function test(test_code){
             document.getElementById("test_element").innerHTML = "TEST" + test_code;
