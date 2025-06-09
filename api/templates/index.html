@@ -68,8 +68,8 @@
         }
 
         function narrow_selection_to_sub_path(super_path, sub_path) {
-            narrow_selection_to_super_path(super_path); //in case you select sub before super
-            document.getElementById(super_path).selected = true;
+            narrow_selection_to_super_path(super_path); 
+            document.getElementById(super_path).selected = true;  //in case you select sub before super
             document.getElementById(sub_path).selected = true;  //because selecting_super_path unselects subpaths
 
             super_path_cat_element = document.getElementById(super_path + " category");
@@ -137,8 +137,10 @@
                     test(selected_sub_path);
                     for (let metab of metabolite_dict[selected_super_path][selected_sub_path]) {
                         if (metab.includes(search)) {
-                            document.getElementById(metab).hidden = false;
+                            document.getElementById(metab).hidden = false; //???????Why does this not work????
                             test(metab);
+                        }else{
+                            test("NOT THERE");
                         }
                     }
                 } else {
