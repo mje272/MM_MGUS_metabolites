@@ -18,9 +18,16 @@
             for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
                 select_metabolite_child.hidden = true;
             }
+
             document.getElementById(sup_path + " category").hidden = false;
 
-            for (let sub_path of metabolite_dict[sup_path]) {
+            for (let sup_path in metabolite_dict) {
+                for (let sub_path in metabolite_dict[sup_path]) {
+                    document.getElementById(sub_path).hidden = true;
+                }
+            }
+
+            for (let sub_path of metabolite_dict[sup_path]) { //could also combine this with above loop with conditional
                 document.getElementById(sub_path).hidden = false;
             }
 
