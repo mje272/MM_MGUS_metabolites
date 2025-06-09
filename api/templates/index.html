@@ -137,6 +137,7 @@
                     for (let metab of metabolite_dict[selected_super_path][selected_sub_path]) {
                         if (metab.includes(search)) {
                             document.getElementById(metab).hidden = false; //???????Why does this not work????
+                            document.getElementById(selected_sub_path + " category").hidden = false;
                             document.getElementById(selected_super_path + " category").hidden = false;
                         }
                     }
