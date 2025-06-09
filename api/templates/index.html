@@ -59,14 +59,19 @@
         }
 
         function narrow_selection_to_sub_path(super_path, sub_path) {
-            narrow_selection_to_super_path(super_path); //if you select sub before super
+            narrow_selection_to_super_path(super_path); //in case you select sub before super
             document.getElementById(super_path).selected = true;
 
-            for (let sub_path_or_metab_opt of document.getElementById("")) {
-
+            super_path_cat_element = document.getElementById(super_path + " category");
+            for (let sub_path_or_metab_opt of super_path_cat_element.children) { //hide all members of selected super path
+                sub_path_or_metab_opt.hidden = true;
             }
-        }
 
+            document.getElementById(sub_path + " category").hidden = false; //unhide selected sub path
+            for (let selected_metab of metabolite_dict[super_path][sub_path])
+                document.getElementById(selected_metab).hidden = false;
+
+        }
 
         function produce_options() {
             for (let super_path in metabolite_dict) {
