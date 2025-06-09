@@ -37,6 +37,9 @@
                     document.getElementById(sub_path).selected = false;
                 }
             }
+            selected_metab_val = document.getElementById("select_metabolite").value; //works because value and id are same for metab options, adjust if needed
+            document.getElementById(selected_metab_val).selected = false; //unselect selected metab
+
 
             for (let sub_path in metabolite_dict[sup_path]) { //could also combine this with above loop with conditional
                 document.getElementById(sub_path).hidden = false;
@@ -95,6 +98,7 @@
                         let metabolite_option_node = document.createElement("option");
                         metabolite_option_node.innerHTML = metabolite_option;
                         metabolite_option_node.id = metabolite_option;
+                        metabolite_option_node.value = metabolite_option;  //can alternatively use numerical code or something
                         metabolite_option_node.onclick = function(){ narrow_selection_to_sub_path(super_path, sub_path); }; //select sub path when selected
                         super_path_node.appendChild(metabolite_option_node);
                     }
