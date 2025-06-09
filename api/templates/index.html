@@ -37,8 +37,11 @@
                     document.getElementById(sub_path).selected = false;
                 }
             }
-            selected_metab_val = document.getElementById("select_metabolite").value; //works because value and id are same for metab options, adjust if needed
-            document.getElementById(selected_metab_val).selected = false; //unselect selected metab
+
+            if (document.getElementById("select_metabolite").value) { //if metabolite selected, unselect it
+                selected_metab_val = document.getElementById("select_metabolite").value; //works because value and id are same for metab options, adjust if needed
+                document.getElementById(selected_metab_val).selected = false; 
+            }
 
 
             for (let sub_path in metabolite_dict[sup_path]) { //could also combine this with above loop with conditional
