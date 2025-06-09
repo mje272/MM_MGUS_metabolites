@@ -130,7 +130,7 @@
 
         function search_metabolite() { //can also make this more forgiving ie use regex, ignore capitalization, etc
             let search = document.getElementById("search_metabolite").value; 
-
+            test("10");
             clear_metabolite_select(unselect=false);
 
             let selected_super_path = document.getElementById("super_path_select").value; //search within selected fields
@@ -165,7 +165,9 @@
                     }
                 }
             }
+
         }
+
 
         function test(test_code){
             document.getElementById("test_element").innerHTML = "TEST" + test_code;
@@ -215,7 +217,7 @@
     </form>
     <br>
     
-    <p id="test_element" hidden></p>
+    <p id="test_element"></p>
     
 
 {% endblock %}
