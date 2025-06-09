@@ -24,7 +24,7 @@
                 }
             }
  
-            sup_path_cat_element = document.getElementById(sup_path + " category"); //set selected super path to be not hidden as well as its subpaths and metabolites
+            let sup_path_cat_element = document.getElementById(sup_path + " category"); //set selected super path to be not hidden as well as its subpaths and metabolites
             sup_path_cat_element.hidden = false;
             for (let selected_sub_path_or_metab of sup_path_cat_element.children) {
                 selected_sub_path_or_metab.hidden = false;
@@ -38,9 +38,10 @@
                 }
             }
 
-            if (document.getElementById("select_metabolite").value) { //if metabolite selected, unselect it
-                selected_metab_val = document.getElementById("select_metabolite").value; //works because value and id are same for metab options, adjust if needed
-                document.getElementById(selected_metab_val).selected = false; 
+            let metab_select = document.getElementById("select_metabolite");
+            let selected_metab_ind = metab_select.selectedIndex;
+            if (selected_metab_ind != -1) { //if metabolite selected, unselect it
+                metab_select.options[selected_metab_ind].selected = false; 
             }
 
 
@@ -80,7 +81,6 @@
             for (let selected_metab of metabolite_dict[super_path][sub_path]) {
                 document.getElementById(selected_metab).hidden = false;
             }
-            
 
         }
 
@@ -124,6 +124,21 @@
             }
         }
 
+        function search_metabolite() { //can also make this more forgiving ie use regex, ignore capitalization, etc
+            let search = document.getElementById("search_metabolite").value;
+
+
+            for (let super_path in metabolite_dict) {
+                for (let sub_path in metabolite_dict[super_path]) {
+                    for (let metab in metabolite_dict[super_path][sub_path]){
+                        if (metab.includes(search)) {
+
+                        }
+                    }
+                }
+            }
+        }
+
 
         function test(test_code){
             document.getElementById("test_element").innerHTML = "TEST" + test_code;
@@ -160,11 +175,13 @@
         <select id="select_metabolite" name="query_metabolite" form="metabolite_search_form" size="10" required>
             
         </select>
-        <br><br>
+        <br>
 
         <!-- make this search bar narrow down selection options -->
         <label for="search_metabolite">Search</label> 
-        <input type="text" id="search_metabolite" name="search_metabolite">
+        <input type="text" id="search_metabolite" name="search_metabolite" oninput="search_metabolite();">
+
+        <!-- could make type=search -->
         <br><br>
 
         <button type="submit">Submit</button>
