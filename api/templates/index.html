@@ -133,8 +133,8 @@
             
             clear_metabolite_select(unselect=false);
             let selected_super_path = document.getElementById("super_path_select").value; //search within selected fields
-            test(selected_super_path);
-            if (selected_super_path) {
+            test(selected_super_path + " " + search);
+            if (selected_super_path && selected_super_path != "All") {
                 let selected_sub_path = document.getElementById("sub_path_select").value;
                 if (selected_sub_path) {
                     for (let metab in metabolite_dict[selected_super_path][selected_sub_path]) {
