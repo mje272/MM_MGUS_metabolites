@@ -15,14 +15,15 @@
         };
 
         function narrow_selection_to_super_path(sup_path) {
-            test("A");
             for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
                 select_metabolite_child.hidden = true;
             }
             document.getElementById(sup_path + " category").hidden = false;
-            for (let sub_path of metabolite_dict[sup_path]) {
 
+            for (let sub_path of metabolite_dict[sup_path]) {
+                document.getElementById(sub_path).hidden = false;
             }
+
             test(sup_path);
         }
 
@@ -38,12 +39,12 @@
 
 
         function produce_options() {
-            for (let super_path of metabolite_dict) {
+            for (let super_path in metabolite_dict) {
                 let super_path_node = document.createElement("optgroup");
                 super_path_node.label = super_path;
                 super_path_node.id = super_path + " category";
 
-                for (let sub_path of metabolite_dict[super_path]) {
+                for (let sub_path in metabolite_dict[super_path]) {  //make sure for in loop is ordered
                     let sub_path_node = document.createElement("option");
                     sub_path_node.innerHTML = sub_path;
                     sub_path_node.innerHTML = sub_path + " category";
