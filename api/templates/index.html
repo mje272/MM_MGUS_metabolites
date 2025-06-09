@@ -17,9 +17,9 @@
         function narrow_selection_to_super_path(sup_path) {
             test("A");
             for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
-                select_metabolite_child.hidden = "true";
+                select_metabolite_child.hidden = true;
             }
-            document.getElementById(sup_path + " category").hidden = "false";
+            document.getElementById(sup_path + " category").hidden = false;
             test(sup_path);
         }
 
@@ -32,7 +32,7 @@
                 for (let sub_path of Object.keys(metabolite_dict[super_path])) {
                     let sub_path_node = document.createElement("option");
                     sub_path_node.innerHTML = sub_path;
-                    sub_path_node.disabled = "disabled"; //make the subpath text bold or something
+                    sub_path_node.disabled = true; //make the subpath text bold or something
                     super_path_node.appendChild(sub_path_node);
                     
 
