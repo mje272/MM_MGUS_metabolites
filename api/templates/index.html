@@ -3,7 +3,7 @@
 {% block head %}
     <title>Home</title>
     <script>
-        const metabolite_dict = {
+        const metabolite_dict = {  //generate this from the online database
             "Lipid":{
                 "Fatty Acid, Branched": ["(12 or 13)-methylmyristate (a15:0 or i15:0)", "(14 or 15)-methylpalmitate (a17:0 or i17:0)"],
                 "Fatty Acid Metabolism (Acyl Carnitine, Hydroxy)": ["(R)-3-hydroxybutyrylcarnitine"]
@@ -14,12 +14,22 @@
             }
         };
 
+
         function narrow_selection_to_super_path(sup_path) {
-            for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
-                select_metabolite_child.hidden = true;
+            for (let sup_path_opt_group of document.getElementById("select_metabolite").children) { //clear out the whole metabolite select
+                sup_path_opt_group.hidden = true;
+
+                for (let sub_path_or_metab_opt of sup_path_opt_group.children) {
+                    sup_path_opt_group.hidden = true;
+                }
+            }
+ 
+            sup_path_cat_element = document.getElementById(sup_path + " category"); //set selected super path to be not hidden as well as its subpaths and metabolites
+            sup_path_cat_element.hidden = false;
+            for (let selected_sub_path_or_metab of sup_path_cat_element.children) {
+                selected_sub_path_or_metab.hidden = false;
             }
 
-            document.getElementById(sup_path + " category").hidden = false;
 
             for (let sup_path in metabolite_dict) {
                 for (let sub_path in metabolite_dict[sup_path]) {
@@ -35,8 +45,11 @@
         }
 
         function reset_super_path() {
-            for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
+            for (let select_metabolite_child of document.getElementById("select_metabolite").children) { //unhide everything in metabolite selection
                 select_metabolite_child.hidden = false;
+                for (let sub_path_or_metab_opt of sup_path_opt_group.children) {
+                    sup_path_opt_group.hidden = false;
+                }
             }
             for (let sup_path in metabolite_dict) {
                 for (let sub_path in metabolite_dict[sup_path]) {
@@ -45,8 +58,10 @@
             }
         }
 
-        function narrow_selection_to_sub_path(sub_path) {
-
+        function narrow_selection_to_sub_path(super_path, sub_path) {
+            narrow_selection_to_super_path(super_path); //if you select sub before super
+            document.getElementById(super_path).selected = true;
+            
         }
 
 
@@ -72,7 +87,7 @@
                     let sub_path_select_opt_node = document.createElement("option");
                     sub_path_select_opt_node.innerHTML = sub_path;
                     sub_path_select_opt_node.id = sub_path;
-                    sub_path_select_opt_node.onclick = function(){ narrow_selection_to_sub_path(sub_path) };
+                    sub_path_select_opt_node.onclick = function(){ narrow_selection_to_sub_path(super_path, sub_path) };
                     document.getElementById("sub_path_select").appendChild(sub_path_select_opt_node);
                 }
 
