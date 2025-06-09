@@ -95,6 +95,7 @@
                         let metabolite_option_node = document.createElement("option");
                         metabolite_option_node.innerHTML = metabolite_option;
                         metabolite_option_node.id = metabolite_option;
+                        metabolite_option_node.onclick = function(){ narrow_selection_to_sub_path(super_path, sub_path); }; //select sub path when selected
                         super_path_node.appendChild(metabolite_option_node);
                     }
 
