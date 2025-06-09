@@ -134,13 +134,10 @@
             if (selected_super_path && selected_super_path != "All") {
                 let selected_sub_path = document.getElementById("sub_path_select").value;
                 if (selected_sub_path) {
-                    test(selected_sub_path);
                     for (let metab of metabolite_dict[selected_super_path][selected_sub_path]) {
                         if (metab.includes(search)) {
                             document.getElementById(metab).hidden = false; //???????Why does this not work????
-                            test(metab);
-                        }else{
-                            test("NOT THERE");
+                            document.getElementById(selected_super_path + " category").hidden = false;
                         }
                     }
                 } else {
@@ -149,6 +146,7 @@
                             if (metab.includes(search)) {
                                 document.getElementById(metab).hidden = false;
                                 document.getElementById(sub_path + " category").hidden = false; //also show subpath (and superpath)
+                                document.getElementById(selected_super_path + " category").hidden = false;
                             }
                         }
                     }
