@@ -15,7 +15,7 @@
         };
 
 
-        function narrow_selection_to_super_path(sup_path) {
+        function narrow_selection_to_super_path(sup_path) { //make this unselect subpath
             for (let sup_path_opt_group of document.getElementById("select_metabolite").children) { //clear out the whole metabolite select
                 sup_path_opt_group.hidden = true;
 
@@ -31,9 +31,10 @@
             }
 
 
-            for (let sup_path in metabolite_dict) {
+            for (let sup_path in metabolite_dict) { // hide all in sub path selection; next loop unhides selected subpaths
                 for (let sub_path in metabolite_dict[sup_path]) {
                     document.getElementById(sub_path).hidden = true;
+                    document.getElementById(sub_path).selected = false;
                 }
             }
 
