@@ -51,9 +51,10 @@
                     sub_path_or_metab_opt.hidden = false;
                 }
             }
-            for (let sup_path in metabolite_dict) {
+            for (let sup_path in metabolite_dict) { //show all in subpath select
                 for (let sub_path in metabolite_dict[sup_path]) {
                     document.getElementById(sub_path).hidden = false;
+                    document.getElementById(sub_path).selected = false; //also unselect subpaths
                 }
             }
         }
@@ -91,6 +92,7 @@
                     for (let metabolite_option of metabolite_dict[super_path][sub_path]) {
                         let metabolite_option_node = document.createElement("option");
                         metabolite_option_node.innerHTML = metabolite_option;
+                        metabolite_option_node.id = metabolite_option;
                         super_path_node.appendChild(metabolite_option_node);
                     }
 
