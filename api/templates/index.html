@@ -50,8 +50,6 @@
             for (let sub_path in metabolite_dict[sup_path]) { //could also combine this with above loop with conditional
                 document.getElementById(sub_path).hidden = false;
             }
-
-            test(sup_path);
         }
 
         function reset_super_path() {
@@ -136,6 +134,7 @@
             test(selected_super_path + " " + search);
             if (selected_super_path && selected_super_path != "All") {
                 let selected_sub_path = document.getElementById("sub_path_select").value;
+                test(selected_sub_path + " " + search);
                 if (selected_sub_path) {
                     for (let metab in metabolite_dict[selected_super_path][selected_sub_path]) {
                         if (metab.includes(search)) {
