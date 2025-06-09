@@ -133,7 +133,7 @@
             
             clear_metabolite_select(unselect=false);
             let selected_super_path = document.getElementById("super_path_select").value; //search within selected fields
-            test("1");
+            test(selected_super_path);
             if (selected_super_path) {
                 let selected_sub_path = document.getElementById("sub_path_select").value;
                 if (selected_sub_path) {
@@ -165,8 +165,6 @@
                     }
                 }
             }
-            test("10");
-
         }
 
 
