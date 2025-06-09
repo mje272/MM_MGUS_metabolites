@@ -130,10 +130,10 @@
 
         function search_metabolite() { //can also make this more forgiving ie use regex, ignore capitalization, etc
             let search = document.getElementById("metab_search_bar").value; 
-            test("10");
+            
             clear_metabolite_select(unselect=false);
-
             let selected_super_path = document.getElementById("super_path_select").value; //search within selected fields
+            test("1");
             if (selected_super_path) {
                 let selected_sub_path = document.getElementById("sub_path_select").value;
                 if (selected_sub_path) {
@@ -165,6 +165,7 @@
                     }
                 }
             }
+            test("10");
 
         }
 
