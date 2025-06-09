@@ -20,27 +20,47 @@
                 select_metabolite_child.hidden = true;
             }
             document.getElementById(sup_path + " category").hidden = false;
+            for (let sub_path of metabolite_dict[sup_path]) {
+
+            }
             test(sup_path);
         }
 
+        function reset_super_path() {
+            for (let select_metabolite_child of document.getElementById("select_metabolite").children) {
+                select_metabolite_child.hidden = false;
+            }
+        }
+
+        function narrow_selection_to_sub_path(sub_path) {
+
+        }
+
+
         function produce_options() {
-            for (let super_path of Object.keys(metabolite_dict)) {
+            for (let super_path of metabolite_dict) {
                 let super_path_node = document.createElement("optgroup");
                 super_path_node.label = super_path;
                 super_path_node.id = super_path + " category";
 
-                for (let sub_path of Object.keys(metabolite_dict[super_path])) {
+                for (let sub_path of metabolite_dict[super_path]) {
                     let sub_path_node = document.createElement("option");
                     sub_path_node.innerHTML = sub_path;
+                    sub_path_node.innerHTML = sub_path + " category";
                     sub_path_node.disabled = true; //make the subpath text bold or something
                     super_path_node.appendChild(sub_path_node);
                     
-
                     for (let metabolite_option of metabolite_dict[super_path][sub_path]) {
                         let metabolite_option_node = document.createElement("option");
                         metabolite_option_node.innerHTML = metabolite_option;
                         super_path_node.appendChild(metabolite_option_node);
                     }
+
+                    let sub_path_select_opt_node = document.createElement("option");
+                    sub_path_select_opt_node.innerHTML = sub_path;
+                    sub_path_select_opt_node.id = sub_path;
+                    sub_path_select_opt_node.onclick = function(){ narrow_selection_to_sub_path(sub_path) };
+                    document.getElementById("sub_path_select").appendChild(sub_path_select_opt_node);
                 }
 
                 document.getElementById("select_metabolite").appendChild(super_path_node);
@@ -49,7 +69,6 @@
                 super_path_select_opt_node.innerHTML = super_path;
                 super_path_select_opt_node.id = super_path;
                 super_path_select_opt_node.onclick = function(){ narrow_selection_to_super_path(super_path); };
-                
                 document.getElementById("super_path_select").appendChild(super_path_select_opt_node);
 
             }
@@ -70,11 +89,13 @@
 {% block body %}
     <h1>Select a metabolite</h1>
 
-    <!-- make it so this narrows down selection -->
-    <!-- Also make it so that this list is generated from online data -->
     <label for="super_path_select">Select a Super Pathway: </label>
     <select id="super_path_select" size="5">
+        <option selected onclick="reset_super_path();">All</option>
+    </select>
 
+    <label for="sub_path_select">Select a Sub Pathway: </label>
+    <select id="sub_path_select" size="5">
     </select>
     
     <form action="/query_metabolite" target="_blank" method="post" id="metabolite_search_form">
