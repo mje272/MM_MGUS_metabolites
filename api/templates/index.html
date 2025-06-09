@@ -68,8 +68,10 @@
             }
 
             document.getElementById(sub_path + " category").hidden = false; //unhide selected sub path
-            for (let selected_metab of metabolite_dict[super_path][sub_path])
+            for (let selected_metab of metabolite_dict[super_path][sub_path]) {
                 document.getElementById(selected_metab).hidden = false;
+            }
+            
 
         }
 
