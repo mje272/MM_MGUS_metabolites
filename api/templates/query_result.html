@@ -4,8 +4,13 @@
     <title>Query Results</title>
     <script>
         const metabolite = '{{ metabolite|safe }}';
+        const MM_data = {{ mm_data|safe }};
+        const MGUS_data = {{ mgus_data|safe }};
         function render_results() {
-            document.getElementById("test").innerHTML = metabolite;
+            test_elem = document.getElementById("test")
+            test_elem.innerHTML = metabolite;
+            test_elem.
+
         }
     </script>
 {% endblock %}
